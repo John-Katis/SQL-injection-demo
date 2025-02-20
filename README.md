@@ -17,6 +17,7 @@ Install the project requirements on your choice of operating system, including:
 Run using either of the following:
 
 * `make run`
+
 * `docker compose up --build`
 
 Open web browser and visit
@@ -26,7 +27,42 @@ Open web browser and visit
 Clean the docker Environment (after making changes):
 
 * `make clean`
-* or through Docker commands `rm` for created containers and `rmi` for created images
+* or through Docker commands `rm` for created containers and `rmi` for created images. ***Images are associated to containers. You must first remove the container before removing the image***: 
+    * Write `docker ps -a`: this gives you all containers that have been build - their ID is needed to clean them
+    * Write `docker images -a` to see all docker images you have created - again their ID is important
+    * To delete the containers use `docker rm` followed by the ID each container:
+        
+        e.g.: 
+        
+        All together:
+        
+        `docker rm 48c064730b81 c6d80ff5be44 62b9c56cd422`
+
+        or one by one: 
+        
+        `docker rm 48c064730b81` 
+        
+        `docker rm c6d80ff5be44`
+        
+        `docker rm 62b9c56cd422`
+        
+    * Same procedure applies for the images, but with `docker rmi` command:
+
+        e.g.:
+
+        All together:
+
+        `docker rmi 99e09be04fc1 cb3b004c0880 34245ab68ca0`
+
+        or one by one:
+
+        `docker rmi 99e09be04fc1`
+        
+        `docker rmi cb3b004c0880`
+        
+        `docker rmi 34245ab68ca0`
+
+
 
 # Example Payloads
 
